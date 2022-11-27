@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../utils/images.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     getLogin();
     Timer(Duration(seconds: 2), () {
-      (isLoggedIn)?Get.offNamed("/HomePage"):Get.offNamed("/Login");
+      (isLoggedIn)?Get.offNamed("/NavigationBarScreen"):Get.offNamed("/Login");
     });
     // TODO: implement initState
     super.initState();
@@ -44,7 +42,6 @@ class _SplashPageState extends State<SplashPage> {
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height,
         child: Image.asset(ImagesConstant.SplashImage,),
-
       ),
     );
   }

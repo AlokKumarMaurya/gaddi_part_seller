@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaddi_part_seller/screens/auth/loginPage.dart';
+import 'package:gaddi_part_seller/screens/bottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:gaddi_part_seller/screens/home/homePage.dart';
 import 'package:gaddi_part_seller/screens/spalshScreen.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/Login", page:()=>LoginPage()),
         GetPage(name: "/", page:()=>SplashPage()),
-        GetPage(name: "/HomePage", page: ()=>HomePage())
+        GetPage(name: "/HomePage", page: ()=>HomePage()),
+        GetPage(name: "/NavigationBarScreen", page:()=>NavigationBarScreen())
       ],
       home:SplashPage(),
     );

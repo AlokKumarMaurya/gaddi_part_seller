@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:get_storage/get_storage.dart';
+
 class SharedPrefrences{
   static const String token="LoginToken";
   static const String id="Id";
