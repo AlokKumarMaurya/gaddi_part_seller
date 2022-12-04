@@ -10,53 +10,45 @@ String loginModalToJson(LoginModal data) => json.encode(data.toJson());
 
 class LoginModal {
   LoginModal({
-    required this.result,
-    required this.message,
-    required this.accessToken,
-    required this.tokenType,
-    required this.expiresAt,
-    required this.user,
-    required this.userId,
+  required this.token,
+  required this.tokenType,
+  required this.expiresAt,
+  required this.user,
   });
 
-  bool result;
-  String message;
-  String accessToken;
+  String token;
   String tokenType;
   DateTime expiresAt;
   User user;
-  int userId;
 
   factory LoginModal.fromJson(Map<String, dynamic> json) => LoginModal(
-    result: json["result"],
-    message: json["message"],
-    accessToken: json["access_token"],
+    token: json["token"],
     tokenType: json["token_type"],
     expiresAt: DateTime.parse(json["expires_at"]),
     user: User.fromJson(json["user"]),
-    userId: json["user_id"],
   );
 
   Map<String, dynamic> toJson() => {
-    "result": result,
-    "message": message,
-    "access_token": accessToken,
+    "token": token,
     "token_type": tokenType,
     "expires_at": expiresAt.toIso8601String(),
     "user": user.toJson(),
-    "user_id": userId,
   };
 }
 
 class User {
   User({
-  required this.id,
-  required this.type,
-  required this.name,
-  required this.email,
-  required this.avatar,
-  required this.avatarOriginal,
-  required this.phone,
+   required this.id,
+   required this.type,
+   required this.name,
+  required  this.email,
+    this.avatar,
+    this.avatarOriginal,
+    this.address,
+    this.country,
+    this.city,
+    this.postalCode,
+   required this.phone,
   });
 
   int id;
@@ -64,7 +56,11 @@ class User {
   String name;
   String email;
   dynamic avatar;
-  String avatarOriginal;
+  dynamic avatarOriginal;
+  dynamic address;
+  dynamic country;
+  dynamic city;
+  dynamic postalCode;
   String phone;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -74,6 +70,10 @@ class User {
     email: json["email"],
     avatar: json["avatar"],
     avatarOriginal: json["avatar_original"],
+    address: json["address"],
+    country: json["country"],
+    city: json["city"],
+    postalCode: json["postal_code"],
     phone: json["phone"],
   );
 
@@ -84,6 +84,10 @@ class User {
     "email": email,
     "avatar": avatar,
     "avatar_original": avatarOriginal,
+    "address": address,
+    "country": country,
+    "city": city,
+    "postal_code": postalCode,
     "phone": phone,
   };
 }

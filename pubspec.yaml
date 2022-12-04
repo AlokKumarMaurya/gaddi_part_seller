@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   get_storage: ^2.0.3
+  fl_chart: ^0.55.2
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:
