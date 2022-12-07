@@ -34,44 +34,44 @@ class AllOrderList {
 
 class Order {
   Order({
-   required this.id,
-   required this.userId,
-   required this.guestId,
-   required this.sellerId,
-   required this.shippingAddress,
-   required this.deliveryStatus,
-   required this.paymentType,
-   required this.paymentStatus,
-   required this.paymentDetails,
-   required this.grandTotal,
-   required this.couponDiscount,
-   required this.code,
-   required this.date,
-   required this.viewed,
-   required this.deliveryViewed,
-   required this.paymentStatusViewed,
-   required this.commissionCalculated,
-   required this.createdAt,
-   required this.updatedAt,
+ required this.id,
+ required this.userId,
+ required this.guestId,
+ required this.sellerId,
+ required this.shippingAddress,
+ required this.deliveryStatus,
+ required this.paymentType,
+ required this.paymentStatus,
+ required this.paymentDetails,
+ required this.grandTotal,
+ required this.couponDiscount,
+ required this.code,
+ required this.date,
+ required this.viewed,
+ required this.deliveryViewed,
+ required this.paymentStatusViewed,
+ required this.commissionCalculated,
+ required this.createdAt,
+ required this.updatedAt,
   });
 
   int id;
-  String userId;
+  String? userId;
   dynamic guestId;
-  String sellerId;
-  String shippingAddress;
+  String? sellerId;
+  String? shippingAddress;
   DeliveryStatus? deliveryStatus;
   PaymentType? paymentType;
   PaymentStatus? paymentStatus;
   dynamic paymentDetails;
-  String grandTotal;
-  String couponDiscount;
+  String? grandTotal;
+  String? couponDiscount;
   dynamic code;
-  String date;
-  String viewed;
-  String deliveryViewed;
-  String paymentStatusViewed;
-  String commissionCalculated;
+  String? date;
+  String? viewed;
+  String? deliveryViewed;
+  String? paymentStatusViewed;
+  String? commissionCalculated;
   DateTime createdAt;
   DateTime updatedAt;
 

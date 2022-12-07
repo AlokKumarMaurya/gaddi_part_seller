@@ -76,22 +76,22 @@ class OrderDetail {
   });
 
   int id;
-  String userId;
+  String? userId;
   dynamic guestId;
-  String sellerId;
-  String shippingAddress;
+  String? sellerId;
+  String? shippingAddress;
   DeliveryStatus? deliveryStatus;
   PaymentType? paymentType;
   PaymentStatus? paymentStatus;
   dynamic paymentDetails;
   String? grandTotal;
-  String couponDiscount;
+  String? couponDiscount;
   dynamic code;
-  String date;
-  String viewed;
-  String deliveryViewed;
-  String paymentStatusViewed;
-  String commissionCalculated;
+  String? date;
+  String? viewed;
+  String? deliveryViewed;
+  String? paymentStatusViewed;
+  String? commissionCalculated;
   DateTime createdAt;
   DateTime updatedAt;
 

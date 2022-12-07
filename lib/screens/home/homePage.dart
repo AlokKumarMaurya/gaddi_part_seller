@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isLoading = false.obs;
-    DashboardController _dashboardcontroller=Get.put(DashboardController(),permanent: true);
+    DashboardController _dashboardcontroller=Get.put(DashboardController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: App_Bar().CustomAppBar,
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               isLoading.value=false;
             });
           },
-          child: (_dashboardcontroller.allDashBoard.isEmpty)?Obx(()=>(!isLoading.value)
+          child: Obx(()=>(!isLoading.value)
               ? SingleChildScrollView(
                   child: Column(
                     children: [
@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                 )
               : Center(
                   child: CircularProgressIndicator(),
-                )):Center(child:CircularProgressIndicator(),),
+                ))
         ),
       ),
     );

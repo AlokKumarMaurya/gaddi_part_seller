@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gaddi_part_seller/utils/sharedPrefrences/sharedprefrences.dart';
+import 'package:get/get.dart';
 
 import '../../utils/images.dart';
 
 class UpdateUserProfile extends StatelessWidget {
-  const UpdateUserProfile({Key? key}) : super(key: key);
+  UpdateUserProfile({Key? key}) : super(key: key);
+
+  var name="".obs;
+  var lastName=''.obs;
+  var email=''.obs;
+  var phone="".obs;
+  var password="".obs;
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +55,24 @@ class UpdateUserProfile extends StatelessWidget {
                 fontSize: 22,
                 fontWeight: FontWeight.w400
             )),
-            Container(
-              alignment: Alignment.center,
-              height: 35,
-              width: 100,
-              decoration: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.circular(30)
+            InkWell(
+              onTap: (){
+                Get.back();
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 35,
+                width: 100,
+                decoration: BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.circular(30)
+                ),
+                child: Text("Save",style:TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold
+                ),),
               ),
-              child: Text("Save",style:TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold
-              ),),
             )
           ],
         ) ,
@@ -117,16 +130,22 @@ class UpdateUserProfile extends StatelessWidget {
   detailsWidget(){
     return Column(
           children: [
-            ContainerWidget(textFieldtext: "Name", title:"Name",defaultVal:SharedPrefrences().getName(),isPhone: false,) ,
-            ContainerWidget(textFieldtext: "Last name", title:"Last Name",defaultVal:SharedPrefrences().getName(),isPhone:false,) ,
-            ContainerWidget(textFieldtext: "Email", title:"Email",defaultVal:SharedPrefrences().getEmail(),isPhone: false,) ,
-            ContainerWidget(textFieldtext: "Phone Number", title:"Phone",defaultVal:SharedPrefrences().getPhone(),isPhone:true) ,
-            ContainerWidget(textFieldtext: "New Password", title:"Password",defaultVal:SharedPrefrences().getPhone(),isPhone:false) ,
+            ContainerWidget(textFieldtext: "Name", title:"Name",defaultVal:SharedPrefrences().getName(),isPhone: false,on_change: (a){name.value=a;},) ,
+            ContainerWidget(textFieldtext: "Last name", title:"Last Name",defaultVal:SharedPrefrences().getName(),isPhone:false,on_change: (a){lastName.value=a;},) ,
+            ContainerWidget(textFieldtext: "Email", title:"Email",defaultVal:SharedPrefrences().getEmail(),isPhone: false,on_change: (a){email.value=a;},) ,
+            ContainerWidget(textFieldtext: "Phone Number", title:"Phone",defaultVal:SharedPrefrences().getPhone(),isPhone:true,on_change: (a){phone.value=a;}) ,
+            ContainerWidget(textFieldtext: "New Password", title:"Password",defaultVal:SharedPrefrences().getPhone(),isPhone:false,on_change: (a){password.value=a;},) ,
           ],
     );
   }
   submitButton() {
-    return ElevatedButton(onPressed: (){}, child:Text("Update"),style: ElevatedButton.styleFrom(
+    return ElevatedButton(onPressed: (){
+print(name.value);
+print(lastName.value);
+print(email.value);
+print(phone.value);
+print(password.value);
+    }, child:Text("Update"),style: ElevatedButton.styleFrom(
     primary: Colors.purple.shade400
     ),);
   }
@@ -139,11 +158,15 @@ class ContainerWidget extends StatelessWidget {
   String textFieldtext;
   String defaultVal;
   bool isPhone;
-   ContainerWidget({Key? key,required this.textFieldtext,required this.title,required this.defaultVal,required this.isPhone}) : super(key: key);
-
+  Function on_change;
+   ContainerWidget({Key? key,required this.textFieldtext,required this.title,required this.defaultVal,required this.isPhone,required this.on_change(String a)}) : super(key: key);
+// TextEditingController _controller=TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Form(
+        key: formKey,
+        child:Container(
       height:75,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -160,6 +183,8 @@ class ContainerWidget extends StatelessWidget {
           ),),
           SizedBox(height: 0,) ,
           TextFormField(
+            onChanged: (val)=>on_change(val),
+            // controller: _controller,
             inputFormatters: [
               (this.isPhone)?LengthLimitingTextInputFormatter(10):LengthLimitingTextInputFormatter(30)
             ],
@@ -177,6 +202,6 @@ class ContainerWidget extends StatelessWidget {
           )
         ],
       ),
-    );
+    ));
   }
 }

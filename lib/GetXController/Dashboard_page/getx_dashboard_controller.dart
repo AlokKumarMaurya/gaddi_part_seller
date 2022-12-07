@@ -19,7 +19,7 @@ class DashboardController extends GetxController {
     // TODO: implement onInit
     getSlider();
     getAllDashBoardDetails();
-    getOrderList();
+
     super.onInit();
   }
 
@@ -38,6 +38,7 @@ class DashboardController extends GetxController {
       if(slidePageController.value ==sliderContent.length) {
         slidePageController.value=0;
       }else{
+        debugPrint(slidePageController.value.toString());
         slidePageController.value++;
       }
     });
@@ -50,11 +51,5 @@ class DashboardController extends GetxController {
         }
   }
 
-  void getOrderList()async{
-       var response=await ApiClint().GetAllList() ;
-       if(response!=null){
-         AllOrderList modal=response;
-        // debugPrint(modal.order.length.toString());
-       }
-  }
+
 }

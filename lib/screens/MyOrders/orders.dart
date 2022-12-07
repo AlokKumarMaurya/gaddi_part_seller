@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import '../../GetXController/order_controller/get_all_orders.dart';
+import '../../GetXController/order_controller/tab_list_builder.dart';
 import '../../utils/images.dart';
 import '../bottomNavigationBar/BottomBartab_controller.dart';
 
@@ -9,11 +11,11 @@ class MyOrders extends StatelessWidget {
   MyOrders({Key? key, required this.controllValue}) : super(key: key);
   BottomBarItemClick barItemClick=Get.put(BottomBarItemClick());
   var isloading = false.obs;
+  GetAllOrder _getAllOrder=Get.put(GetAllOrder());
 
   @override
   Widget build(BuildContext context) {
-    print(this.controllValue);
-    print(barItemClick.tabControl.value);
+List tabList=["All","Pending","Processing","Delivered","Returned","Failed","Cancelled","Confirmed","Out for delivery"];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -41,6 +43,23 @@ class MyOrders extends StatelessWidget {
                       physics: ScrollPhysics(),
                       isScrollable: true,
                       tabs: [
+                        // ListView.builder(
+                        //   shrinkWrap: true,
+                        //     scrollDirection: Axis.horizontal,
+                        //     itemCount: tabList.length,
+                        //     itemBuilder: (context,index){return Tab(
+                        //   child: Container(
+                        //     padding: EdgeInsets.symmetric(
+                        //         horizontal: 25, vertical: 10),
+                        //     decoration: BoxDecoration(
+                        //         color: Colors.grey.shade300,
+                        //         borderRadius: BorderRadius.circular(30)),
+                        //     child: Text(
+                        //       "${tabList[index]}",
+                        //       style: TextStyle(color: Colors.black),
+                        //     ),
+                        //   ),
+                        // );}),
                         Tab(
                           child: Container(
                             padding: EdgeInsets.symmetric(
@@ -173,140 +192,56 @@ class MyOrders extends StatelessWidget {
                             ? TabBarView(
                           physics: AlwaysScrollableScrollPhysics(),
                           children: [
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            // Center(
+                            //   child: Column(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: [
+                            //       Image(
+                            //         image: AssetImage(ImagesConstant.noData),
+                            //         height: 250,
+                            //       ),
+                            //       SizedBox(
+                            //         height: 20,
+                            //       ),
+                            //       Text("No Data found")
+                            //     ],
+                            //   ),
+                            // ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.allOrderList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.pendingList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.pendingList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.deliveredList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.returnedList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.failedList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.cancelledList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.confirmedList),
                             ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage(ImagesConstant.noData),
-                                    height: 250,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("No Data found")
-                                ],
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TabListBuilder(dataList:_getAllOrder.outfordeliveryList),
                             ),
                           ],
                         ): Center(

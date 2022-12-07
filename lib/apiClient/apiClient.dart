@@ -112,6 +112,10 @@ class ApiClint extends GetConnect{
        'Accept': 'application/json',
        'Authorization': 'Bearer $token',
      }) ;
+     debugPrint("response.body");
+     debugPrint(response.body.toString());
+     debugPrint(response.statusCode.toString());
+     debugPrint("response.body");
      if(response.statusCode==200){
        AllOrderList modal=AllOrderList.fromJson(response.body);
        return modal;

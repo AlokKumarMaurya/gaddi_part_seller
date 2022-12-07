@@ -35,7 +35,7 @@ class SliderWidget extends StatelessWidget {
               },),
           );
         },
-      )),
-    );
+      )));
+
   }
 }
