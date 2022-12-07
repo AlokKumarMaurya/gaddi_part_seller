@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
           //getTheme();
     getLogin();
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       (isLoggedIn)?Get.offNamed("/NavigationBarScreen"):Get.offNamed("/Login");
       getTheme();
     });
@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         alignment: Alignment.center,
        // height: MediaQuery.of(context).size.height,
-        child: Image.asset(ImagesConstant.SplashImage,
+        child: Image.asset(ImagesConstant.splashImage,
         height: 150,
         ),
       ),
@@ -53,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
 }
 
 void getTheme() {
-  if(SharedPrefrences().get_theme()==true){
+  if(SharedPrefrences().getTheme()==true){
     Get.changeTheme(ThemeData.dark());
   } else{
     Get.changeTheme(ThemeData.light());

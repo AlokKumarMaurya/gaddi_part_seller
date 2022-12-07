@@ -27,7 +27,7 @@ class MyOrders extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Image(
-            image: AssetImage(ImagesConstant.Logo),
+            image: AssetImage(ImagesConstant.logo),
           ),
         ),
       ),
@@ -178,7 +178,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -193,7 +193,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -208,7 +208,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -223,7 +223,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -238,7 +238,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -253,7 +253,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -268,7 +268,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -283,7 +283,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(
@@ -298,7 +298,7 @@ class MyOrders extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image(
-                                    image: AssetImage(ImagesConstant.No_Data),
+                                    image: AssetImage(ImagesConstant.noData),
                                     height: 250,
                                   ),
                                   SizedBox(

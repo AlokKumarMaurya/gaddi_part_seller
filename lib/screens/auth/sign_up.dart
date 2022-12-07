@@ -1,11 +1,12 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+
 import '../../GetXController/auth_controller/Getx_login.dart';
 import '../../utils/images.dart';
-
-class LoginPage extends StatelessWidget {
-   LoginPage({Key? key}) : super(key: key);
-   AuthController getxLogin=Get.put(AuthController());
+class SignUpScreen extends StatelessWidget {
+   SignUpScreen({Key? key}) : super(key: key);
+  AuthController _authController=Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class LoginPage extends StatelessWidget {
             ),
             Container(
               child: Text(
-                "Login Please",
+                "SignUp here",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
             ),
@@ -33,6 +34,7 @@ class LoginPage extends StatelessWidget {
               height: 20,
             ),
             Container(
+              height: 50,
               margin: EdgeInsets.only(left: 20, right: 20),
               padding: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
@@ -40,7 +42,26 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12)),
               child: TextFormField(
                 onChanged: (val){
-                  getxLogin.email=val;
+                  _authController.Sname=val;
+                },
+                decoration: InputDecoration(
+                  // labelText: "Name",
+                    icon: Icon(Icons.person),
+                    hintText: "Enter your name",
+                    border: InputBorder.none),
+              ),
+            ),
+            SizedBox(height:20,),
+            Container(
+              height: 50,
+              margin: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(12)),
+              child: TextFormField(
+                onChanged: (val){
+                _authController.Semail=val;
                 },
                 decoration: InputDecoration(
                     icon: Icon(Icons.email),
@@ -52,6 +73,25 @@ class LoginPage extends StatelessWidget {
               height: 20,
             ),
             Container(
+              height: 50,
+              margin: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(12)),
+              child: TextFormField(
+                onChanged: (val){
+               _authController.Sphone=val;
+                },
+                decoration: InputDecoration(
+                    icon: Icon(Icons.phone_android),
+                    // labelText: "Phone",
+                    hintText: "Enter your phone number",
+                    border: InputBorder.none),
+              ),
+            ),
+                SizedBox(height: 20,),
+            Container(
               margin: EdgeInsets.only(left: 20, right: 20),
               padding: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
@@ -59,77 +99,52 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12)),
               child: Obx(()=>TextFormField(
                 onChanged: (val){
-                  getxLogin.password=val;
+                 _authController.Spassword=val;
                 },
-                obscureText: !getxLogin.isVisible.value,
+              obscureText: !_authController.isVisible.value,
                 decoration: InputDecoration(
                     icon: Icon(Icons.key),
                     hintText: "Enter password",
                     border: InputBorder.none,
-                    suffixIcon: Obx(() =>IconButton(
+                    suffixIcon: IconButton(
                         onPressed: () {
-                          getxLogin.isVisible.value=!getxLogin.isVisible.value;
+                          _authController.isVisible.value=!_authController.isVisible.value;
                         },
                         icon: Icon(
-                          (getxLogin.isVisible.value)?Icons.remove_red_eye:Icons.visibility_off,
+                          (_authController.isVisible.value)?Icons.remove_red_eye:Icons.visibility_off,
                           color: Colors.black,
-                        )))),
+                        ))),
               )),
             ),
 
             SizedBox(height: 15,),
 
-      Obx(()=>(getxLogin.isSessionStarted.value)?CircularProgressIndicator():ElevatedButton(
+            Obx(()=>(_authController.isSessionStarted.value)?CircularProgressIndicator():ElevatedButton(
 
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple.shade400
+                    primary: Colors.purple.shade400
                 ),
                 onPressed: (){
-                  getxLogin.loginUser();
+                 _authController.SignUpUser();
                 },
-                child:Text(" Submit ") )),
+                child:Text(" SignUp "))),
 
             SizedBox(height: 15,),
             Row(
               children: [
                 SizedBox(width: 20,),
-                Obx(() => Checkbox(value: getxLogin.isRemberOn.value, onChanged:(val){
-                  getxLogin.isRemberOn.value=!getxLogin.isRemberOn.value;
+               Obx(() =>Checkbox(value: _authController.isRemberOn.value, onChanged:(val){
+                   _authController.isRemberOn.value=!_authController.isRemberOn.value;
                 })),
                 SizedBox(width: 5,),
                 Text("Rember me"),
                 Expanded(child: Container(
-                  margin: EdgeInsets.only(right: 30),          
-                  alignment: Alignment.centerRight,
-                  child: Text("Forget Passwaord"),
                 ))
               ],
-            ) ,
-            SizedBox(height: 30,),
-
-
-
-
-           Row(
-             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             children: [
-               SizedBox(width:0,),
-                   Text("Not a member register now",),
-               ElevatedButton(
-
-                   style: ElevatedButton.styleFrom(
-                       primary: Colors.purple.shade400
-                   ),
-                   onPressed: (){
-                        Get.toNamed("/SignUp");
-                   },
-                   child:Text(" SignUp ")),
-               SizedBox(width: 10,)
-             ],
-           )
+            )
           ],
         ),
       ),
-    );
+    ) ;
   }
 }

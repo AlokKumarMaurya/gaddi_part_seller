@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../GetXController/Dashboard_page/getx_dashboard_controller.dart';
 import '../../../utils/images.dart';
-import '../../MyOrders/Inbox.dart';
+import '../../MyOrders/orders.dart';
 import '../../bottomNavigationBar/BottomBartab_controller.dart';
 import '../../bottomNavigationBar/bottom_navigation_bar.dart';
 
 class CompletedOrders extends StatelessWidget {
   CompletedOrders({Key? key}) : super(key: key);
   BottomBarItemClick barItemClick = Get.put(BottomBarItemClick());
-
+  DashboardController _dashboardController=Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(()=>(_dashboardController.allDashBoard.isEmpty)?Center(child: Container(),):Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -53,11 +54,11 @@ class CompletedOrders extends StatelessWidget {
                           child: Container(
                         height: 40,
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          "0",
+                        child: Obx(()=>Text(
+                          "${_dashboardController.allDashBoard.value[0].deliveryStatus}",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w300),
-                        ),
+                        )),
                       )),
                       SizedBox(
                         width: 20,
@@ -92,11 +93,11 @@ class CompletedOrders extends StatelessWidget {
                           child: Container(
                         height: 40,
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          "0",
+                        child: Obx(()=>Text(
+                          "${_dashboardController.allDashBoard.value[0].cancleOrder}",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w300),
-                        ),
+                        )),
                       )),
                       SizedBox(
                         width: 20,
@@ -123,7 +124,7 @@ class CompletedOrders extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "Returned",
+                        "Pending orders",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w300),
                       ),
@@ -131,11 +132,11 @@ class CompletedOrders extends StatelessWidget {
                           child: Container(
                         height: 40,
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          "0",
+                        child: Obx(()=>Text(
+                          "${_dashboardController.allDashBoard.value[0].pandingOrder}",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w300),
-                        ),
+                        )),
                       )),
                       SizedBox(
                         width: 20,
@@ -162,7 +163,7 @@ class CompletedOrders extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "Failed",
+                        "Successful orders",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w300),
                       ),
@@ -171,7 +172,7 @@ class CompletedOrders extends StatelessWidget {
                         height: 40,
                         alignment: Alignment.centerRight,
                         child: Text(
-                          "0",
+                          "${_dashboardController.allDashBoard.value[0].successOrder}",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w300),
                         ),
@@ -190,6 +191,6 @@ class CompletedOrders extends StatelessWidget {
           )
         ],
       ),
-    );
+    ));
   }
 }

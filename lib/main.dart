@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gaddi_part_seller/screens/More/htmlView.dart';
+import 'package:gaddi_part_seller/screens/More/update_profile.dart';
 import 'package:gaddi_part_seller/screens/auth/loginPage.dart';
+import 'package:gaddi_part_seller/screens/auth/sign_up.dart';
 import 'package:gaddi_part_seller/screens/bottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:gaddi_part_seller/screens/home/homePage.dart';
 import 'package:gaddi_part_seller/screens/spalshScreen.dart';
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(SharedPrefrences().get_theme().toString());
+    print(SharedPrefrences().getTheme().toString());
     return GetMaterialApp(
       //themeMode: (!SharedPrefrences().get_theme())?ThemeMode.dark:ThemeMode.light,
       debugShowCheckedModeBanner: false,
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/", page:()=>SplashPage()),
         GetPage(name: "/HomePage", page: ()=>HomePage()),
         GetPage(name: "/NavigationBarScreen", page:()=>NavigationBarScreen(initialIndex: 0,)),
-         GetPage(name: "/HtmlContentViewer", page:()=>HtmlContentViewer())
+         GetPage(name: "/HtmlContentViewer", page:()=>HtmlContentViewer()) ,
+        GetPage(name: "/SignUp", page:()=>SignUpScreen()),
+        GetPage(name: "/UpdateUserProfile", page: ()=>UpdateUserProfile())
       ],
       home:SplashPage(),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gaddi_part_seller/screens/MyOrders/Inbox.dart';
+import 'package:gaddi_part_seller/screens/MyOrders/orders.dart';
 import 'package:gaddi_part_seller/screens/bottomNavigationBar/BottomBartab_controller.dart';
 import 'package:get/get.dart';
 

@@ -3,7 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 
 class MonthlyEarning extends StatelessWidget {
   MonthlyEarning({Key? key}) : super(key: key);
-  var _dateTextStyle = TextStyle(
+  final _dateTextStyle = const TextStyle(
     fontSize: 10,
     color: Colors.purple,
     fontWeight: FontWeight.bold,
@@ -30,31 +30,31 @@ class MonthlyEarning extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
+        const Text(
           "Monthly Earning",
           style: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 20,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
            Row(
              children: [
                Container(
                  height: 20,
                  width: 15,
-                 decoration: BoxDecoration(
+                 decoration: const BoxDecoration(
                    shape: BoxShape.circle,
                    color: Colors.blue
                  ),
                ) ,
-               Text("Your Earning")
+               const Text("Your Earning")
              ],
            )  ,
             Row(
@@ -62,18 +62,18 @@ class MonthlyEarning extends StatelessWidget {
                 Container(
                   height: 20,
                   width: 15,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.red
                   ),
                 ) ,
-                Text("Commission Given")
+                const Text("Commission Given")
               ],
             ) ,
-            SizedBox(width: 15,)
+            const SizedBox(width: 15,)
           ],
         ) ,
-        SizedBox(height: 15,),
+        const SizedBox(height: 15,),
         Container(
           height: 300,
           child: BarChart(BarChartData(
@@ -81,7 +81,7 @@ class MonthlyEarning extends StatelessWidget {
             barTouchData: BarTouchData(
               touchTooltipData: BarTouchTooltipData(
                 tooltipBgColor: Colors.grey,
-                getTooltipItem: (_a, _b, _c, _d) => null,
+                getTooltipItem: (a, b, c, d) => null,
               ),
             ),
             titlesData: FlTitlesData(
@@ -182,7 +182,7 @@ class MonthlyEarning extends StatelessWidget {
               )),
             ),
             borderData: FlBorderData(
-              border: Border(
+              border: const Border(
                   bottom: BorderSide(color: Colors.black),
                   left: BorderSide(color: Colors.black)),
             ),

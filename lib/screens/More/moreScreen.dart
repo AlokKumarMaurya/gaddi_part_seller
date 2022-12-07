@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaddi_part_seller/screens/More/update_profile.dart';
 import 'package:gaddi_part_seller/utils/images.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -36,7 +37,7 @@ class MoreScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
-                                ImagesConstant.Logo,
+                                ImagesConstant.logo,
                               ),
                               fit: BoxFit.fitHeight)),
                     )
@@ -55,6 +56,9 @@ class MoreScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
+                       onTap:(){
+                         updateProfile();
+                       } ,
                       leading: Icon(
                         Icons.person,
                         color: Colors.blue,
@@ -241,5 +245,9 @@ class MoreScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void updateProfile() {
+Get.to(UpdateUserProfile(),fullscreenDialog: true);
   }
 }
