@@ -8,6 +8,7 @@ import '../GetXController/auth_controller/Getx_login.dart';
 import '../helperWidget/snackbar.dart';
 import '../utils/modals/dashboard/dashBoardData.dart';
 import '../utils/modals/loginModal.dart';
+import '../utils/modals/more_page/profile_update.dart';
 import '../utils/modals/policies.dart';
 import '../utils/modals/signUpModal.dart';
 import '../utils/modals/slider_modal.dart';
@@ -34,7 +35,6 @@ class ApiClint extends GetConnect{
   }
 
  SignUpUser()async{
-   debugPrint("test again");
    var body={
    "name":_authcontroller.Sname,
    "email":_authcontroller.Semail,
@@ -66,7 +66,6 @@ class ApiClint extends GetConnect{
    }
    
   }
-
 
   GetSliders()async{
    try {
@@ -103,7 +102,6 @@ class ApiClint extends GetConnect{
    }
   }
 
-
   GetAllList()async{
     var token=sharedPrefrences.getToken();
    try{
@@ -125,4 +123,36 @@ class ApiClint extends GetConnect{
      ShowCustomSnackbar().showSnackbar(e.toString());
    }
   }
+
+  UpdateProfile()async{
+    var token=sharedPrefrences.getToken();
+    var body={
+    "phone":"9559901210",
+    "new_password":"123456",
+    "confirm_password":"123456",
+    "name":"sandeep shop",
+    "address":"gomtinagar lucknow",
+    "country":"india",
+    "city":"lucknow",
+    "postal_code":"226030",
+    "cash_on_delivery_status":"cash payment",
+    "bank_payment_status":"",
+    "bank_name":"",
+    "bank_acc_name":"",
+    "bank_acc_no":"",
+    "bank_routing_no":""
+    };
+    try{
+      final response=await post(AppConstant.updateProfile,body,headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      });
+      if(response.statusCode==200){
+        ProfileUpdateModal modal=ProfileUpdateModal.fromJson(response.body);
+        return  modal;
+      }
+    }catch(e){ShowCustomSnackbar().showSnackbar(e.toString());}
+  }
+
 }

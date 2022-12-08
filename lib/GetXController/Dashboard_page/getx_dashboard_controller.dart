@@ -38,7 +38,7 @@ class DashboardController extends GetxController {
       if(slidePageController.value ==sliderContent.length) {
         slidePageController.value=0;
       }else{
-        debugPrint(slidePageController.value.toString());
+        // debugPrint(slidePageController.value.toString());
         slidePageController.value++;
       }
     });
