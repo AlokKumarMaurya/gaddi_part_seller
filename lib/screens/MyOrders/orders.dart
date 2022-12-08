@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../GetXController/order_controller/get_all_orders.dart';
-import '../../GetXController/order_controller/tab_list_builder.dart';
+import 'tab_list_builder.dart';
 import '../../utils/images.dart';
 import '../bottomNavigationBar/BottomBartab_controller.dart';
 
@@ -209,39 +209,39 @@ List tabList=["All","Pending","Processing","Delivered","Returned","Failed","Canc
                             // ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.allOrderList),
+                              child: TabListBuilder(dataList:_getAllOrder.allOrderList,isAll: true,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.pendingList),
+                              child: TabListBuilder(dataList:_getAllOrder.pendingList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.pendingList),
+                              child: TabListBuilder(dataList:_getAllOrder.processingList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.deliveredList),
+                              child: TabListBuilder(dataList:_getAllOrder.deliveredList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.returnedList),
+                              child: TabListBuilder(dataList:_getAllOrder.returnedList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.failedList),
+                              child: TabListBuilder(dataList:_getAllOrder.failedList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.cancelledList),
+                              child: TabListBuilder(dataList:_getAllOrder.cancelledList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.confirmedList),
+                              child: TabListBuilder(dataList:_getAllOrder.confirmedList,isAll: false,),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: TabListBuilder(dataList:_getAllOrder.outfordeliveryList),
+                              child: TabListBuilder(dataList:_getAllOrder.outfordeliveryList,isAll: false,),
                             ),
                           ],
                         ): Center(

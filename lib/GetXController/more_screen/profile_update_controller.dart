@@ -5,14 +5,17 @@ import 'package:get/get.dart';
 import '../../helperWidget/snackbar.dart';
 import '../../utils/modals/more_page/profile_update.dart';
 import '../../utils/sharedPrefrences/sharedprefrences.dart';
+import 'get_profile_details_controller.dart';
 
 class ProfileUpdateController extends GetxController{
+  ProfileDetailsController profileDetailsController=Get.put(ProfileDetailsController());
+
   RxString nameController="${SharedPrefrences().getName()}".obs;
   var lastnameController="test".obs;
   var emailController=SharedPrefrences().getEmail().obs;
   var phoneNumberController=SharedPrefrences().getPhone().obs;
-  var newPasswordController="1111".obs;
-  var confirmPasswordController="111".obs;
+  var newPasswordController="".obs;
+  var confirmPasswordController="".obs;
   var addressController="default".obs;
   var countryController="default".obs;
   var cityController="default".obs;
@@ -25,7 +28,8 @@ class ProfileUpdateController extends GetxController{
   @override
   void onInit() {
     // TODO: implement onInit
-    initializeValue();
+    profileDetailsController.onInit();
+      initializeValue();
     super.onInit();
   }
   void initializeValue(){
@@ -35,21 +39,23 @@ class ProfileUpdateController extends GetxController{
     lastnameController.value="test";
     emailController.value=SharedPrefrences().getEmail();
     phoneNumberController.value=SharedPrefrences().getPhone();
-    newPasswordController.value="1111";
-    confirmPasswordController.value="111";
-    addressController.value="default";
-   countryController.value="default";
-   cityController.value="default";
-   postalCodeController.value="1111";
+    newPasswordController.value="";
+    confirmPasswordController.value="";
+    addressController.value="${profileDetailsController.modal.address}";
+   countryController.value="${profileDetailsController.modal.country}";
+   cityController.value="${profileDetailsController.modal.city}";
+   postalCodeController.value="${profileDetailsController.modal.postalCode}";
   }
 
   void verify(){
     debugPrint(lastnameController.value);
     if(nameController.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Name cannot be blank");
-    }else if(lastnameController.value.trim().isEmpty){
-      ShowCustomSnackbar().showSnackbar("Last name cannot be empty");
-    }else if(emailController.value.trim().isEmpty){
+    }
+    // else if(lastnameController.value.trim().isEmpty){
+    //   ShowCustomSnackbar().showSnackbar("Last name cannot be empty");
+    // }
+    else if(emailController.value.trim().isEmpty){
       ShowCustomSnackbar().showSnackbar("Email cannot be empty");
     }else if(phoneNumberController.value.trim().isEmpty){
       ShowCustomSnackbar().showSnackbar("Phone number cannot be empty");
@@ -65,11 +71,13 @@ class ProfileUpdateController extends GetxController{
       ShowCustomSnackbar().showSnackbar("City cannot be empty");
     }else if(postalCodeController.value.trim().isEmpty){
       ShowCustomSnackbar().showSnackbar("Postal code cannot be empty");
-    }else if(bankNameController.value.trim().isEmpty){
-      ShowCustomSnackbar().showSnackbar("Bnak name cannot be empty");
-    }else if(bankAccount_No_Controller.value.trim().isEmpty){
-      ShowCustomSnackbar().showSnackbar("Account number cannot be empty cannot be empty");
-    }else {
+    }
+    // else if(bankNameController.value.trim().isEmpty){
+    //   ShowCustomSnackbar().showSnackbar("Bnak name cannot be empty");
+    // }else if(bankAccount_No_Controller.value.trim().isEmpty){
+    //   ShowCustomSnackbar().showSnackbar("Account number cannot be empty cannot be empty");
+    // }
+    else {
       updateProfile();
     }
   }

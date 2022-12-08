@@ -8,19 +8,7 @@ import '../../utils/images.dart';
 
 class UpdateUserProfile extends StatelessWidget {
   UpdateUserProfile({Key? key}) : super(key: key);
-  ProfileUpdateController _profileUpdateController =
-  Get.put(ProfileUpdateController());
-
-
-
-
-
-
-
-
-
-
-
+  ProfileUpdateController _profileUpdateController = Get.put(ProfileUpdateController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +87,8 @@ class UpdateUserProfile extends StatelessWidget {
             CircleAvatar(
               radius: 50,
               backgroundColor: Colors.grey.shade400,
-              child: (SharedPrefrences().getAvatar() != "")
-                  ? Image.network("${SharedPrefrences().getAvatar()}")
+              child: ( _profileUpdateController.profileDetailsController.modal.avatarOriginal!= "")
+                  ? Image.network("${_profileUpdateController.profileDetailsController.modal.avatarOriginal}")
                   : Image.asset(ImagesConstant.logo),
             ),
             SizedBox(
@@ -162,15 +150,15 @@ class UpdateUserProfile extends StatelessWidget {
             _profileUpdateController.nameController.value=a;
           },
         ),
-        ContainerWidget(
-          textFieldtext: "Last name",
-          title: "Last Name",
-          defaultVal: _profileUpdateController.lastnameController.value,
-          isPhone: false,
-          on_change: (a) {
-            _profileUpdateController.lastnameController.value=a;
-          },
-        ),
+        // ContainerWidget(
+        //   textFieldtext: "Last name",
+        //   title: "Last Name",
+        //   defaultVal: _profileUpdateController.lastnameController.value,
+        //   isPhone: false,
+        //   on_change: (a) {
+        //     _profileUpdateController.lastnameController.value=a;
+        //   },
+        // ),
         ContainerWidget(
           textFieldtext: "Email",
           title: "Email",
@@ -242,24 +230,24 @@ class UpdateUserProfile extends StatelessWidget {
             _profileUpdateController.postalCodeController.value=a;
           },
         ),
-        ContainerWidget(
-          textFieldtext: "name",
-          title: "Bank Name",
-          defaultVal: _profileUpdateController.bankNameController.value,
-          isPhone: false,
-          on_change: (a) {
-            _profileUpdateController.bankNameController.value=a;
-          },
-        ),
-        ContainerWidget(
-          textFieldtext: "Account no.",
-          title: "Bank Account no.",
-          defaultVal: _profileUpdateController.bankAccount_No_Controller.value,
-          isPhone: true,
-          on_change: (a) {
-            _profileUpdateController.bankAccount_No_Controller.value=a;
-          },
-        ),
+        // ContainerWidget(
+        //   textFieldtext: "name",
+        //   title: "Bank Name",
+        //   defaultVal: _profileUpdateController.bankNameController.value,
+        //   isPhone: false,
+        //   on_change: (a) {
+        //     _profileUpdateController.bankNameController.value=a;
+        //   },
+        // ),
+        // ContainerWidget(
+        //   textFieldtext: "Account no.",
+        //   title: "Bank Account no.",
+        //   defaultVal: _profileUpdateController.bankAccount_No_Controller.value,
+        //   isPhone: true,
+        //   on_change: (a) {
+        //     _profileUpdateController.bankAccount_No_Controller.value=a;
+        //   },
+        // ),
       ],
     );
   }

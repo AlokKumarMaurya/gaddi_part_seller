@@ -34,13 +34,13 @@ class GetAllOrder extends GetxController{
   }
 
   void filterList(){
-    pendingList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    processingList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    deliveredList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    returnedList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    failedList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    cancelledList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    confirmedList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
-    outfordeliveryList.value=allOrderList.value.where((element) => element.deliveryStatus=="").toList();
+    pendingList.value=allOrderList.value.where((element) => element.deliveryStatus=="pending").toList();
+    processingList.value=allOrderList.value.where((element) => element.deliveryStatus=="processing").toList();
+    deliveredList.value=allOrderList.value.where((element) => element.deliveryStatus=="Delivered").toList();
+    returnedList.value=allOrderList.value.where((element) => element.deliveryStatus=="returned").toList();
+    failedList.value=allOrderList.value.where((element) => element.deliveryStatus=="failed").toList();
+    cancelledList.value=allOrderList.value.where((element) => element.deliveryStatus=="canceled").toList();
+    confirmedList.value=allOrderList.value.where((element) => element.deliveryStatus!.toLowerCase().trim()=="conformed").toList();
+    outfordeliveryList.value=allOrderList.value.where((element) => element.deliveryStatus=="outfordelevery").toList();
   }
 }

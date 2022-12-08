@@ -42,7 +42,7 @@ class AuthController extends GetxController {
         SharedPrefrences().saveId(modal.user.id.toString());
         SharedPrefrences().saveName(modal.user.name);
         SharedPrefrences().saveEmail(modal.user.email);
-        SharedPrefrences().saveAvatar((modal.user.avatar != null) ? modal.user.avatar : "");
+        SharedPrefrences().saveAvatar((modal.user.avatarOriginal != null) ? modal.user.avatarOriginal : "");
         SharedPrefrences().savePhone(modal.user.phone);
 
         Get.offNamed("/NavigationBarScreen");

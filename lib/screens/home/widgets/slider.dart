@@ -17,17 +17,17 @@ class SliderWidget extends StatelessWidget {
           .size
           .width,
       color: Colors.grey.shade400,
-      child: Obx(()=>PageView.builder(
+      child:
+      Obx(()=>PageView.builder(
 
         onPageChanged: (value){
-          debugPrint(value.toString());
+          debugPrint("value.toString()");
         },
-
-        controller: PageController(keepPage: false, initialPage: _dashboardController.slidePageController.value,),
+        controller:PageController(keepPage: false, initialPage: _dashboardController.slidePageController.value),
         itemCount: _dashboardController.sliderContent.length,
         itemBuilder: (context, index) {
           return Container(
-            child: Image.network("${_dashboardController.sliderContent[index]}",
+            child: Image.network("${_dashboardController.sliderContent[index].photo}",
               errorBuilder: (context, error, stackTrace) {
                 return Container(
                   child: Image.asset(ImagesConstant.logo),
@@ -35,7 +35,8 @@ class SliderWidget extends StatelessWidget {
               },),
           );
         },
-      )));
+      ))
+    );
 
   }
 }

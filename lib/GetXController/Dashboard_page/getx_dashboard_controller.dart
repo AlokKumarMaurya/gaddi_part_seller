@@ -10,10 +10,12 @@ import '../../utils/modals/dashboard/dashBoardData.dart';
 import '../../utils/modals/slider_modal.dart';
 
 class DashboardController extends GetxController {
-  RxList sliderContent=[].obs ;
+  RxList<Datum> sliderContent=<Datum>[].obs ;
   RxInt slidePageController=0.obs;
   RxList<AllDashBoardData> allDashBoard=<AllDashBoardData>[].obs;
   RxBool isDataLoaded=false.obs;
+late   PageController pageController=PageController(keepPage: false, initialPage:slidePageController.value);
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -33,14 +35,17 @@ class DashboardController extends GetxController {
   }
 
   void sliderController(){
-    PageController _pageController=PageController(keepPage: false, initialPage: slidePageController.value);
     Timer.periodic(Duration(seconds: 3), (timer) {
       if(slidePageController.value ==sliderContent.length) {
         slidePageController.value=0;
+        // pageController.jumpTo(slidePageController.value.toDouble());
       }else{
-        // debugPrint(slidePageController.value.toString());
-        slidePageController.value++;
+        debugPrint("slidePageController.value.toString()");
+        debugPrint(slidePageController.value.toString());
+        slidePageController.value=slidePageController.value+1;
+        // pageController.jumpTo(slidePageController.value.toDouble());
       }
+      // pageController.jumpTo(slidePageController.value.toDouble());
     });
   }
 

@@ -8,7 +8,10 @@ import '../GetXController/auth_controller/Getx_login.dart';
 import '../helperWidget/snackbar.dart';
 import '../utils/modals/dashboard/dashBoardData.dart';
 import '../utils/modals/loginModal.dart';
+import '../utils/modals/more_page/SellerReturnPoliciesModal.dart';
+import '../utils/modals/more_page/SellerSupportModal.dart';
 import '../utils/modals/more_page/profile_update.dart';
+import '../utils/modals/more_page/user_profile.dart';
 import '../utils/modals/policies.dart';
 import '../utils/modals/signUpModal.dart';
 import '../utils/modals/slider_modal.dart';
@@ -25,7 +28,7 @@ class ApiClint extends GetConnect{
     };
     try{
       final res=await post(AppConstant.loginUrl,body);
-     if(res !=null){
+     if(res.statusCode==200){
        LoginModal data=LoginModal.fromJson(res.body);
        return data;
      }
@@ -67,11 +70,38 @@ class ApiClint extends GetConnect{
    
   }
 
+  GetSellerSupport()async{
+   try{
+     final response=await get(AppConstant.policiesSupport);
+     if(response.statusCode==200){
+       SellerSupportModal modal=SellerSupportModal.fromJson(response.body);
+       debugPrint(modal.data[0].content);
+       return modal;
+     }
+   }catch(e){
+     ShowCustomSnackbar().showSnackbar(e.toString());
+   }
+  }
+
+  GetSellerReturnPolicies()async{
+   try{
+     final response=await get(AppConstant.policiesReturn);
+     if(response.statusCode==200){
+       SellerReturnPoliciesModal modal=SellerReturnPoliciesModal.fromJson(response.body);
+       return modal;
+     }
+   }catch(e){
+     ShowCustomSnackbar().showSnackbar(e.toString());
+   }
+  }
+
   GetSliders()async{
    try {
      final response=await get(AppConstant.slider);
      if(response!=null){
        SliderModal  modal=SliderModal.fromJson(response.body);
+       debugPrint("modal.data.toString()");
+       debugPrint(modal.data[0].photo);
        return modal;
      }
    }catch(e){
@@ -102,9 +132,26 @@ class ApiClint extends GetConnect{
    }
   }
 
+  GetUserDetails()async{
+    var token=sharedPrefrences.getToken();
+    try{
+      final response=await get(AppConstant.sellarDetail,headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      });
+         if(response.statusCode==200){
+           UserProfile modal=UserProfile.fromJson(response.body);
+           return modal;
+         }
+    }catch(e){
+      ShowCustomSnackbar().showSnackbar(e.toString()) ;
+    }
+  }
+
   GetAllList()async{
     var token=sharedPrefrences.getToken();
-   try{
+   // try{
      final response=await get(AppConstant.allOrderList,headers: {
        'Content-Type': 'application/json',
        'Accept': 'application/json',
@@ -119,9 +166,9 @@ class ApiClint extends GetConnect{
        return modal;
      }
 
-   } catch(e){
-     ShowCustomSnackbar().showSnackbar(e.toString());
-   }
+   // } catch(e){
+   //   ShowCustomSnackbar().showSnackbar(e.toString());
+   // }
   }
 
   UpdateProfile()async{

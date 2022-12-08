@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gaddi_part_seller/screens/More/add_product.dart';
 import 'package:gaddi_part_seller/screens/More/update_profile.dart';
 import 'package:gaddi_part_seller/utils/images.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../GetXController/Check_is_login.dart';
 import '../../GetXController/GetHtmlContent/HtmlContent.dart';
+import '../../GetXController/more_screen/profile_update_controller.dart';
 import '../../helperWidget/app_bar.dart';
 import '../../utils/sharedPrefrences/sharedprefrences.dart';
 import '../auth/loginPage.dart';
@@ -16,7 +18,6 @@ class MoreScreen extends StatelessWidget {
   HtmlContentData htmlContentData = Get.put(HtmlContentData());
   double iconSize = 25;
   TextStyle _textStyle = TextStyle(fontSize: 18, fontWeight: FontWeight.w300);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,13 @@ class MoreScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.grey.shade300, shape: BoxShape.circle),
                       child: Center(
-                        child: Text("No image found"),
+                        // _profileUpdateController.profileDetailsController.modal.avatarOriginal
+                        child: Image.network("https://softfix.in/demo/gaadipart/public/${SharedPrefrences().getAvatar()}",
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              child: Image.asset(ImagesConstant.logo),
+                            );
+                          },),
                       ),
                     ),
               SizedBox(
@@ -70,13 +77,16 @@ class MoreScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: (){
+                        Get.to(AddProduct(),fullscreenDialog: true);
+                      },
                       leading: Icon(
-                        Icons.message,
+                        Icons.production_quantity_limits,
                         color: Colors.blue,
                         size: iconSize,
                       ),
                       title: Text(
-                        "Message",
+                        "Add Product",
                         style: _textStyle,
                       ),
                     ),
@@ -148,24 +158,36 @@ class MoreScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Get.to(HtmlContentViewer(), arguments: {
+                          "html": htmlContentData.seller_return_policies,
+                          "title":"Seller Return Policy"
+                        });
+                      },
                       leading: Icon(
                         Icons.account_box_outlined,
                         color: Colors.blue,
                         size: iconSize,
                       ),
                       title: Text(
-                        "About US",
+                        "Return Policy",
                         style: _textStyle,
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Get.to(HtmlContentViewer(), arguments: {
+                          "html": htmlContentData.seller_support,
+                          "title":"Seller Support Policy"
+                        });
+                      },
                       leading: Icon(
                         Icons.menu_book,
                         color: Colors.blue,
                         size: iconSize,
                       ),
                       title: Text(
-                        "Terms and Conditions",
+                        "Support",
                         style: _textStyle,
                       ),
                     ),

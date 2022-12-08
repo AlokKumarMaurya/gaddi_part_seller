@@ -10,9 +10,9 @@ String allOrderListToJson(AllOrderList data) => json.encode(data.toJson());
 
 class AllOrderList {
   AllOrderList({
-   required this.order,
-   required this.result,
-   required this.message,
+  required this.order,
+  required this.result,
+  required this.message,
   });
 
   List<Order> order;
@@ -34,44 +34,44 @@ class AllOrderList {
 
 class Order {
   Order({
- required this.id,
- required this.userId,
- required this.guestId,
- required this.sellerId,
- required this.shippingAddress,
- required this.deliveryStatus,
- required this.paymentType,
- required this.paymentStatus,
- required this.paymentDetails,
- required this.grandTotal,
- required this.couponDiscount,
- required this.code,
- required this.date,
- required this.viewed,
- required this.deliveryViewed,
- required this.paymentStatusViewed,
- required this.commissionCalculated,
- required this.createdAt,
- required this.updatedAt,
+  required  this.id,
+  required  this.userId,
+  required  this.guestId,
+  required  this.sellerId,
+  required  this.shippingAddress,
+  required  this.deliveryStatus,
+  required  this.paymentType,
+  required  this.paymentStatus,
+  required  this.paymentDetails,
+  required  this.grandTotal,
+  required  this.couponDiscount,
+  required  this.code,
+  required  this.date,
+  required  this.viewed,
+  required  this.deliveryViewed,
+  required  this.paymentStatusViewed,
+  required  this.commissionCalculated,
+  required  this.createdAt,
+  required  this.updatedAt,
   });
 
   int id;
-  String? userId;
+  String userId;
   dynamic guestId;
-  String? sellerId;
-  String? shippingAddress;
-  DeliveryStatus? deliveryStatus;
-  PaymentType? paymentType;
-  PaymentStatus? paymentStatus;
+  String sellerId;
+  String shippingAddress;
+  String deliveryStatus;
+  String paymentType;
+  String paymentStatus;
   dynamic paymentDetails;
-  String? grandTotal;
-  String? couponDiscount;
+  String grandTotal;
+  String couponDiscount;
   dynamic code;
-  String? date;
-  String? viewed;
-  String? deliveryViewed;
-  String? paymentStatusViewed;
-  String? commissionCalculated;
+  String date;
+  String viewed;
+  String deliveryViewed;
+  String paymentStatusViewed;
+  String commissionCalculated;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -81,9 +81,9 @@ class Order {
     guestId: json["guest_id"],
     sellerId: json["seller_id"],
     shippingAddress: json["shipping_address"],
-    deliveryStatus: deliveryStatusValues.map[json["delivery_status"]],
-    paymentType: paymentTypeValues.map[json["payment_type"]],
-    paymentStatus: paymentStatusValues.map[json["payment_status"]],
+    deliveryStatus: json["delivery_status"],
+    paymentType: json["payment_type"],
+    paymentStatus: json["payment_status"],
     paymentDetails: json["payment_details"],
     grandTotal: json["grand_total"] == null ? null : json["grand_total"],
     couponDiscount: json["coupon_discount"],
@@ -103,9 +103,9 @@ class Order {
     "guest_id": guestId,
     "seller_id": sellerId,
     "shipping_address": shippingAddress,
-    "delivery_status": deliveryStatusValues.reverse![deliveryStatus],
-    "payment_type": paymentTypeValues.reverse![paymentType],
-    "payment_status": paymentStatusValues.reverse![paymentStatus],
+    "delivery_status": deliveryStatus,
+    "payment_type": paymentType,
+    "payment_status": paymentStatus,
     "payment_details": paymentDetails,
     "grand_total": grandTotal == null ? null : grandTotal,
     "coupon_discount": couponDiscount,
@@ -118,36 +118,4 @@ class Order {
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
   };
-}
-
-enum DeliveryStatus { PENDING }
-
-final deliveryStatusValues = EnumValues({
-  "pending": DeliveryStatus.PENDING
-});
-
-enum PaymentStatus { UNPAID }
-
-final paymentStatusValues = EnumValues({
-  "unpaid": PaymentStatus.UNPAID
-});
-
-enum PaymentType { RAZORPAY }
-
-final paymentTypeValues = EnumValues({
-  "razorpay": PaymentType.RAZORPAY
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String>? reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String>? get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
 }

@@ -10,4 +10,7 @@ class AppConstant {
   static const String dashboardData="${baseUrl}sellar_dashbord/";
   static const String allOrderList="${baseUrl}order/list";
   static const String updateProfile="${baseUrl}sellar_profileupdate";
+  static const String policiesSupport="${baseUrl}policies/support";
+  static const String policiesReturn="${baseUrl}policies/return";
+  static const String sellarDetail="${baseUrl}sellar_detail";
 }
