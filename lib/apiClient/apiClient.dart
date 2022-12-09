@@ -1,10 +1,11 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:gaddi_part_seller/utils/all_order_list/allOrderListModal.dart';
 import 'package:gaddi_part_seller/utils/app_constant.dart';
 import 'package:gaddi_part_seller/utils/sharedPrefrences/sharedprefrences.dart';
 import 'package:get/get.dart';
 import '../GetXController/auth_controller/Getx_login.dart';
+import '../GetXController/more_screen/add_product_controller.dart';
 import '../helperWidget/snackbar.dart';
 import '../utils/modals/dashboard/dashBoardData.dart';
 import '../utils/modals/loginModal.dart';
@@ -19,7 +20,7 @@ import '../utils/modals/slider_modal.dart';
 class ApiClint extends GetConnect{
   AuthController _authcontroller=Get.put(AuthController());
   SharedPrefrences sharedPrefrences=SharedPrefrences();
-
+  AddProductController _addProductController=Get.put(AddProductController());
 
  LogInUser() async {
     var body={
@@ -200,6 +201,62 @@ class ApiClint extends GetConnect{
         return  modal;
       }
     }catch(e){ShowCustomSnackbar().showSnackbar(e.toString());}
+  }
+
+  UploadProduct()async{
+    var token=sharedPrefrences.getToken();
+    var startDate="${_addProductController.startselectedDate.value.year}-${_addProductController.startselectedDate.value.month}-${_addProductController.startselectedDate.value.day}";
+    var endDate="${_addProductController.endselectedDate.value.year}-${_addProductController.endselectedDate.value.month}-${_addProductController.endselectedDate.value.day}";
+     Map body={
+      "name":_addProductController.name.value,
+      "added_by":"seller" ,
+      "category_id":_addProductController.categoryId.value,
+      "brand_id":_addProductController.barndId.value ,
+      "barcode":"1" ,
+      "refundable":_addProductController.isRefundable.value ,
+       "photos":MultipartFile(File( _addProductController.imageFilePath.toString()), filename: _addProductController.imagePathString.toString()),
+      "thumbnail_img":"MultipartFile(File(_addProductController.thumbnailFilePath.toString()),filename:_addProductController.thumbnailPathString.toString())",    //its file path not stirng
+      "unit":_addProductController.unitPrice.value ,
+      "min_qty":_addProductController.minQty.value,
+      "low_stock_quantity":_addProductController.setAlert.value,
+      "stock_visibility_state":_addProductController.stockVisible.value,
+      "is_genuine":_addProductController.isGeniune.value ,
+      "quality":_addProductController.quality.value ,
+      "description":_addProductController.description.value,
+      "video_provider":"youtube",
+      "video_link":"http//fdnfjhfdbfhfdffdj",
+      "unit_price":_addProductController.unitPrice.value ,
+      "discount":_addProductController.discount.value,
+      "discount_type":_addProductController.discountType.value,
+      "date_range" :"${startDate} to ${endDate}",
+      "shipping_type":_addProductController.shippingType.value ,
+      "est_shipping_days":_addProductController.estimatedShippingDays.value ,
+      "earn_point":_addProductController.earnPont.value,
+      "flat_shipping_cost":_addProductController.amount.value,
+      "tags":_addProductController.tags.value      ,
+      "sku":_addProductController.sku.value ,
+      "hsn":_addProductController.hsh.value,
+      "current_stock":_addProductController.curentStock.value
+    };
+
+    try{
+
+      
+      var response=await post(AppConstant.sellarAddproduct, body,headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },);
+      debugPrint(response.body.toString());
+      if(response.statusCode==200){
+        var temp=(response.body);
+
+        return  temp["message"];
+
+      }
+    } catch(e){
+      ShowCustomSnackbar().showSnackbar(e.toString());
+    }
   }
 
 }

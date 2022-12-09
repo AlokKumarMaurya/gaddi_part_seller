@@ -13,4 +13,5 @@ class AppConstant {
   static const String policiesSupport="${baseUrl}policies/support";
   static const String policiesReturn="${baseUrl}policies/return";
   static const String sellarDetail="${baseUrl}sellar_detail";
+  static const String sellarAddproduct="${baseUrl}sellar_addproduct";
 }

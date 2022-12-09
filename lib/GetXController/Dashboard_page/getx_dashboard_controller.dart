@@ -40,8 +40,8 @@ late   PageController pageController=PageController(keepPage: false, initialPage
         slidePageController.value=0;
         // pageController.jumpTo(slidePageController.value.toDouble());
       }else{
-        debugPrint("slidePageController.value.toString()");
-        debugPrint(slidePageController.value.toString());
+        // debugPrint("slidePageController.value.toString()");
+        // debugPrint(slidePageController.value.toString());
         slidePageController.value=slidePageController.value+1;
         // pageController.jumpTo(slidePageController.value.toDouble());
       }
