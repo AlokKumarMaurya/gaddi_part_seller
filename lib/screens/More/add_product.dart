@@ -58,6 +58,7 @@ class AddProduct extends StatelessWidget {
           defaultVal: "",
           isPhone: false,
           on_change: (a) {
+            debugPrint(a);
             _addProductController.name.value = a;
           },
         ),
@@ -89,14 +90,14 @@ class AddProduct extends StatelessWidget {
           children: [
             DropDownContainer(
                 dropdownHeading: "Is Refundable",
-                dropDownList: ["Yes", "No"],
+                dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.isRefundable.value=a;},
-                dropDownInitialValue: "Yes".obs),
+                dropDownInitialValue: "".obs),
             DropDownContainer(
                 dropdownHeading: "Is Geniune",
-                dropDownList: ["Yes", "No"],
+                dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.isGeniune.value=a;},
-                dropDownInitialValue: "Yes".obs),
+                dropDownInitialValue: "".obs),
           ],
         ),
         SizedBox(
@@ -166,14 +167,14 @@ class AddProduct extends StatelessWidget {
             dropdownHeading: "Stock visible",
             textFieldHeading: "Qyality",
             defauldText: "defauldText",
-            dropDownList: ["Yes", "No"],
+            dropDownList: ["","Yes", "No"],
             on_drop_down_change: (a) {
               _addProductController.stockVisible.value=a;
             },
             on_text_field_change: (a) {
               _addProductController.quality.value=a;
             },
-            dropDownInitialValue: "Yes".obs),
+            dropDownInitialValue: "".obs),
         SizedBox(
           height: 15,
         ),
@@ -193,14 +194,14 @@ class AddProduct extends StatelessWidget {
             dropdownHeading: "Discount type",
             textFieldHeading: "Discount",
             defauldText: "Discount value",
-            dropDownList: ["Percentage", "Rupees"],
+            dropDownList: ["","Percentage", "Rupees"],
             on_drop_down_change: (a) {
               _addProductController.discountType.value=a;
             },
             on_text_field_change: (a) {
               _addProductController.discount.value=a;
             },
-            dropDownInitialValue: "Percentage".obs),
+            dropDownInitialValue: "".obs),
 
         SizedBox(
           height: 15,
@@ -210,14 +211,14 @@ class AddProduct extends StatelessWidget {
           children: [
             DropDownContainer(
                 dropdownHeading: "Earn point",
-                dropDownList: ["Yes", "No"],
+                dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.earnPont.value=a;},
-                dropDownInitialValue: "Yes".obs),
+                dropDownInitialValue: "".obs),
             DropDownContainer(
                 dropdownHeading: "Shipping type",
-                dropDownList: ["COD", "Online"],
+                dropDownList: ["","COD", "Online"],
                 on_drop_down_change: (a) {_addProductController.shippingType.value=a;},
-                dropDownInitialValue: "COD".obs),
+                dropDownInitialValue: "".obs),
           ],
         ),
         SizedBox(

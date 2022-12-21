@@ -38,7 +38,7 @@ class TabListBuilder extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Order id : ${dataList[index].id}",style: TextStyle(
+                              Text("Order id : ${dataList[index].orderDetails.orderId}",style: TextStyle(
                                 fontSize: 18,
                               ),),
                               SizedBox(height: 5,),
@@ -131,9 +131,6 @@ class TabListBuilder extends StatelessWidget {
 
 
   void openOrderDetailSheet(Order data) async {
-    // if(Get.isBottomSheetOpen){
-    //   Get.back();
-    // }
     Get.bottomSheet(Obx(() => SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -322,7 +319,7 @@ class TabListBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                          "${data.shippingAddress}",
+                          "${data.shippingAddress!.address}",
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -331,13 +328,13 @@ class TabListBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                          "Shipped To : getOrderDetailsmodal.shippingAddress.name}",
+                          "Shipped To : ${data.shippingAddress!.name}",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                               color: Colors.black)),
                       Text(
-                          "Email : getOrderDetailsmodal.shippingAddress.email}",
+                          "Email : ${data.shippingAddress!.email}",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w400,
@@ -366,10 +363,10 @@ class TabListBuilder extends StatelessWidget {
                             ),
                             Container(
                                 // width: MediaQuery.of(context).size.width/2.4,
-                                child: Text("{getOrderDetailsmodal.orderDetails.productName}")),
+                                child: Text("${data.orderDetails.product.name}")),
                           ],
                         ),
-                        Text("Unit Price: ₹getOrderDetailsmodal.orderDetails.unitPrice}",
+                        Text("Unit Price: ₹${data.orderDetails!.price}",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 15),)
                       ],

@@ -14,7 +14,7 @@ class DashboardController extends GetxController {
   RxInt slidePageController=0.obs;
   RxList<AllDashBoardData> allDashBoard=<AllDashBoardData>[].obs;
   RxBool isDataLoaded=false.obs;
-late   PageController pageController=PageController(keepPage: false, initialPage:slidePageController.value);
+// late   PageController pageController=PageController(keepPage: false, initialPage:slidePageController.value);
 
   @override
   void onInit() {
@@ -29,6 +29,8 @@ late   PageController pageController=PageController(keepPage: false, initialPage
     var response = await ApiClint().GetSliders();
     if (response != null) {
       SliderModal modal = response;
+      debugPrint(modal.toString());
+      debugPrint("modal.toString()");
       sliderContent.addAll(modal.data);
     }
     sliderController();
@@ -40,8 +42,8 @@ late   PageController pageController=PageController(keepPage: false, initialPage
         slidePageController.value=0;
         // pageController.jumpTo(slidePageController.value.toDouble());
       }else{
-        // debugPrint("slidePageController.value.toString()");
-        // debugPrint(slidePageController.value.toString());
+        debugPrint("slidePageController.value.toString()");
+        debugPrint(slidePageController.value.toString());
         slidePageController.value=slidePageController.value+1;
         // pageController.jumpTo(slidePageController.value.toDouble());
       }

@@ -1,8 +1,15 @@
 class AppConstant {
   static const String appName = "Gaddi Part Seller";
 
+
+  //live url
+ static const String baseUrl="http://gaadipart.com/api/v2/";
+
+   //test url
+   //static const String baseUrl = "https://softfix.in/demo/gaadipart/api/v2/";
+
+
   //urls
-  static const String baseUrl = "https://softfix.in/demo/gaadipart/api/v2/";
   static const String loginUrl = "${baseUrl}auth/login";
   static const String signUp="${baseUrl}auth/signup";
   static const String policies="${baseUrl}policies/seller";
@@ -14,4 +21,5 @@ class AppConstant {
   static const String policiesReturn="${baseUrl}policies/return";
   static const String sellarDetail="${baseUrl}sellar_detail";
   static const String sellarAddproduct="${baseUrl}sellar_addproduct";
+  static const String brandList="${baseUrl}brands";
 }

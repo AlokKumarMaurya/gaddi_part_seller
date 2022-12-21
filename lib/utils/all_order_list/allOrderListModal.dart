@@ -2,131 +2,6 @@
 //
 //     final allOrderList = allOrderListFromJson(jsonString);
 
-// import 'dart:convert';
-//
-// AllOrderList allOrderListFromJson(String str) => AllOrderList.fromJson(json.decode(str));
-//
-// String allOrderListToJson(AllOrderList data) => json.encode(data.toJson());
-//
-// class AllOrderList {
-//   AllOrderList({
-//   required this.order,
-//   required this.result,
-//   required this.message,
-//   });
-//
-//   List<Order> order;
-//   bool result;
-//   String message;
-//
-//   factory AllOrderList.fromJson(Map<String, dynamic> json) => AllOrderList(
-//     order: List<Order>.from(json["order"].map((x) => Order.fromJson(x))),
-//     result: json["result"],
-//     message: json["message"],
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "order": List<dynamic>.from(order.map((x) => x.toJson())),
-//     "result": result,
-//     "message": message,
-//   };
-// }
-//
-// class Order {
-//   Order({
-//   required  this.id,
-//   required  this.userId,
-//   required  this.guestId,
-//   required  this.sellerId,
-//   required  this.shippingAddress,
-//   required  this.deliveryStatus,
-//   required  this.paymentType,
-//   required  this.paymentStatus,
-//   required  this.paymentDetails,
-//   required  this.grandTotal,
-//   required  this.couponDiscount,
-//   required  this.code,
-//   required  this.date,
-//   required  this.viewed,
-//   required  this.deliveryViewed,
-//   required  this.paymentStatusViewed,
-//   required  this.commissionCalculated,
-//   required  this.createdAt,
-//   required  this.updatedAt,
-//   });
-//
-//   int id;
-//   String userId;
-//   dynamic guestId;
-//   String sellerId;
-//   String shippingAddress;
-//   String deliveryStatus;
-//   String paymentType;
-//   String paymentStatus;
-//   dynamic paymentDetails;
-//   String grandTotal;
-//   String couponDiscount;
-//   dynamic code;
-//   String date;
-//   String viewed;
-//   String deliveryViewed;
-//   String paymentStatusViewed;
-//   String commissionCalculated;
-//   DateTime createdAt;
-//   DateTime updatedAt;
-//
-//   factory Order.fromJson(Map<String, dynamic> json) => Order(
-//     id: json["id"],
-//     userId: json["user_id"],
-//     guestId: json["guest_id"],
-//     sellerId: json["seller_id"],
-//     shippingAddress: json["shipping_address"],
-//     deliveryStatus: json["delivery_status"],
-//     paymentType: json["payment_type"],
-//     paymentStatus: json["payment_status"],
-//     paymentDetails: json["payment_details"],
-//     grandTotal: json["grand_total"] == null ? null : json["grand_total"],
-//     couponDiscount: json["coupon_discount"],
-//     code: json["code"],
-//     date: json["date"],
-//     viewed: json["viewed"],
-//     deliveryViewed: json["delivery_viewed"],
-//     paymentStatusViewed: json["payment_status_viewed"],
-//     commissionCalculated: json["commission_calculated"],
-//     createdAt: DateTime.parse(json["created_at"]),
-//     updatedAt: DateTime.parse(json["updated_at"]),
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "id": id,
-//     "user_id": userId,
-//     "guest_id": guestId,
-//     "seller_id": sellerId,
-//     "shipping_address": shippingAddress,
-//     "delivery_status": deliveryStatus,
-//     "payment_type": paymentType,
-//     "payment_status": paymentStatus,
-//     "payment_details": paymentDetails,
-//     "grand_total": grandTotal == null ? null : grandTotal,
-//     "coupon_discount": couponDiscount,
-//     "code": code,
-//     "date": date,
-//     "viewed": viewed,
-//     "delivery_viewed": deliveryViewed,
-//     "payment_status_viewed": paymentStatusViewed,
-//     "commission_calculated": commissionCalculated,
-//     "created_at": createdAt.toIso8601String(),
-//     "updated_at": updatedAt.toIso8601String(),
-//   };
-// }
-
-
-
-
-// To parse this JSON data, do
-//
-//     final allOrderList = allOrderListFromJson(jsonString);
-
 import 'dart:convert';
 
 AllOrderList allOrderListFromJson(String str) => AllOrderList.fromJson(json.decode(str));
@@ -159,7 +34,7 @@ class AllOrderList {
 
 class Order {
   Order({
-  required this.id,
+  required this.name,
   required this.userId,
   required this.guestId,
   required this.sellerId,
@@ -181,11 +56,11 @@ class Order {
   required this.orderDetails,
   });
 
-  int id;
+  String? name;
   String? userId;
   dynamic guestId;
   String? sellerId;
-  String? shippingAddress;
+  ShippingAddress? shippingAddress;
   String? deliveryStatus;
   String? paymentType;
   String? paymentStatus;
@@ -198,16 +73,16 @@ class Order {
   String? deliveryViewed;
   String? paymentStatusViewed;
   String? commissionCalculated;
-  DateTime createdAt;
-  DateTime updatedAt;
-  List<OrderDetail> orderDetails;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  OrderDetails orderDetails;
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
-    id: json["id"],
+    name: json["name"],
     userId: json["user_id"],
     guestId: json["guest_id"],
     sellerId: json["seller_id"],
-    shippingAddress: json["shipping_address"],
+    shippingAddress: ShippingAddress.fromJson(json["shipping_address"]),
     deliveryStatus: json["delivery_status"],
     paymentType: json["payment_type"],
     paymentStatus: json["payment_status"],
@@ -222,15 +97,15 @@ class Order {
     commissionCalculated: json["commission_calculated"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    orderDetails: List<OrderDetail>.from(json["order_details"].map((x) => OrderDetail.fromJson(x))),
+    orderDetails: OrderDetails.fromJson(json["order_details"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
+    "name": name,
     "user_id": userId,
     "guest_id": guestId,
     "seller_id": sellerId,
-    "shipping_address": shippingAddress,
+    "shipping_address": shippingAddress!.toJson(),
     "delivery_status": deliveryStatus,
     "payment_type": paymentType,
     "payment_status": paymentStatus,
@@ -243,34 +118,34 @@ class Order {
     "delivery_viewed": deliveryViewed,
     "payment_status_viewed": paymentStatusViewed,
     "commission_calculated": commissionCalculated,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "order_details": List<dynamic>.from(orderDetails.map((x) => x.toJson())),
+    "created_at": createdAt!.toIso8601String(),
+    "updated_at": updatedAt!.toIso8601String(),
+    "order_details": orderDetails.toJson(),
   };
 }
 
-class OrderDetail {
-  OrderDetail({
-   required this.id,
-   required this.orderId,
-   required this.sellerId,
-   required this.productId,
-   required this.variation,
-   required this.price,
-   required this.tax,
-   required this.shippingCost,
-   required this.quantity,
-   required this.paymentStatus,
-   required this.deliveryStatus,
-   required this.shippingType,
-   required this.pickupPointId,
-   required this.productReferralCode,
-   required this.createdAt,
-   required this.updatedAt,
-   required this.product,
+class OrderDetails {
+  OrderDetails({
+  required this.id,
+  required this.orderId,
+  required this.sellerId,
+  required this.productId,
+  required this.variation,
+  required this.price,
+  required this.tax,
+  required this.shippingCost,
+  required this.quantity,
+  required this.paymentStatus,
+  required this.deliveryStatus,
+  required this.shippingType,
+  required this.pickupPointId,
+  required this.productReferralCode,
+  required this.createdAt,
+  required this.updatedAt,
+  required this.product,
   });
 
-  int id;
+  int? id;
   String? orderId;
   String? sellerId;
   String? productId;
@@ -288,7 +163,7 @@ class OrderDetail {
   DateTime updatedAt;
   Product product;
 
-  factory OrderDetail.fromJson(Map<String, dynamic> json) => OrderDetail(
+  factory OrderDetails.fromJson(Map<String, dynamic> json) => OrderDetails(
     id: json["id"],
     orderId: json["order_id"],
     sellerId: json["seller_id"],
@@ -389,7 +264,7 @@ class Product {
    required this.weight,
   });
 
-  int id;
+  int? id;
   String? name;
   String? addedBy;
   String? userId;
@@ -562,5 +437,73 @@ class Product {
     "is_genuine": isGenuine == null ? null : isGenuine,
     "quality": quality == null ? null : quality,
     "weight": weight,
+  };
+}
+
+class ShippingAddress {
+  ShippingAddress({
+   required this.id,
+   required this.userId,
+   required this.address,
+   required this.country,
+   required this.city,
+   required this.longitude,
+   required this.latitude,
+   required this.postalCode,
+   required this.phone,
+   required this.setDefault,
+   required this.createdAt,
+   required this.updatedAt,
+   required this.name,
+   required this.email,
+  });
+
+  int? id;
+  String? userId;
+  String? address;
+  String? country;
+  String? city;
+  dynamic longitude;
+  dynamic latitude;
+  String? postalCode;
+  String? phone;
+  String? setDefault;
+  DateTime createdAt;
+  DateTime updatedAt;
+  String? name;
+  String? email;
+
+  factory ShippingAddress.fromJson(Map<String, dynamic> json) => ShippingAddress(
+    id: json["id"],
+    userId: json["user_id"],
+    address: json["address"],
+    country: json["country"],
+    city: json["city"],
+    longitude: json["longitude"],
+    latitude: json["latitude"],
+    postalCode: json["postal_code"],
+    phone: json["phone"],
+    setDefault: json["set_default"],
+    createdAt: DateTime.parse(json["created_at"]),
+    updatedAt: DateTime.parse(json["updated_at"]),
+    name: json["name"],
+    email: json["email"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "user_id": userId,
+    "address": address,
+    "country": country,
+    "city": city,
+    "longitude": longitude,
+    "latitude": latitude,
+    "postal_code": postalCode,
+    "phone": phone,
+    "set_default": setDefault,
+    "created_at": createdAt.toIso8601String(),
+    "updated_at": updatedAt.toIso8601String(),
+    "name": name,
+    "email": email,
   };
 }

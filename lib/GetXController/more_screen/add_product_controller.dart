@@ -7,6 +7,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../helperWidget/snackbar.dart';
+import '../../utils/modals/more_page/brand_list.dart';
 
 class AddProductController extends GetxController {
   static AddProductController get to => Get.find<AddProductController>();
@@ -76,6 +77,7 @@ class AddProductController extends GetxController {
 
     }
   }
+  
 
   void filePiker(String fileType) async {
     final pickedFile = await _picker.getImage(source: ImageSource.camera);
@@ -106,44 +108,45 @@ class AddProductController extends GetxController {
   }
 
   void uploadProduct() async {
-Get.defaultDialog(
-   title: "",
-  content: CircularProgressIndicator()
-) ;
+    Get.dialog(Container(
+      height: 200,
+      width: 200,
+      color: Colors.transparent,child: Center(child: CircularProgressIndicator()),));
     checkValidationOfFields();
-   var response=await ApiClint().UploadProduct();
-   if(response!=null){
-     Get.back();
-     Get.back();
-     ShowCustomSnackbar().showSnackbar(response);
 
-   }
   }
 
 
-
-
-
-
-
-   checkValidationOfFields() {
+   checkValidationOfFields() async {
     if(name.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter name first");
     }else if(categoryId.value=="Category ID"){
       ShowCustomSnackbar().showSnackbar("Select category first");
     }else if(barndId=="Select Brand"){
       ShowCustomSnackbar().showSnackbar("Select brand first");
+    }   else if(isRefundable==""){
+      ShowCustomSnackbar().showSnackbar("Select refundable type first");
+    }  else if(isGeniune=="") {
+      ShowCustomSnackbar().showSnackbar("Select geniune type");
     } else if(minQty.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter quantity first");
     }  else if(setAlert.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter alert quantity first");
+    } else if(stockVisible==""){
+      ShowCustomSnackbar().showSnackbar("Select stock visibility first");
     } else if(quality.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter quality first");
     }else if(unitPrice.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter unit price first");
-    }else if(discount.value.isEmpty){
+    } else if(discountType==""){
+      ShowCustomSnackbar().showSnackbar("Select discout type first");
+    } else if(discount.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter discount first");
-    }else if(imagePathString.isNullOrBlank!){
+    }else if(earnPont==""){
+      ShowCustomSnackbar().showSnackbar("Select earn point first");
+    }  else if(shippingType==""){
+      ShowCustomSnackbar().showSnackbar("Select shipping type first");
+    } else if(imagePathString.isNullOrBlank!){
       ShowCustomSnackbar().showSnackbar("Select image first first");
     }else if(thumbnailPathString.isNullOrBlank!){
       ShowCustomSnackbar().showSnackbar("Select thumbnail first");
@@ -162,8 +165,21 @@ Get.defaultDialog(
     }else if(description.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter description first");
     } else {
-      return isAllFieldValid.value=true;
+    var response=await ApiClint().UploadProduct();
+    if(response!=null){
+      Get.back();
+      Get.back();
+      ShowCustomSnackbar().showSnackbar(response);
     }
+    return isAllFieldValid.value=true;
+  }
+  }
 
+
+
+
+  getAllBrandList()async{
+    var response=await ApiClint().GetbrandList();
+    BrandList modal=response;
   }
 }

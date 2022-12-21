@@ -57,7 +57,6 @@ class UpdateUserProfile extends StatelessWidget {
             InkWell(
               onTap: () {
                 _profileUpdateController.verify();
-                showLoadingDialog();
               },
               child: Container(
                 alignment: Alignment.center,
@@ -84,13 +83,22 @@ class UpdateUserProfile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            CircleAvatar(
+           Obx (()=>(_profileUpdateController.imageFilePath==null)?CircleAvatar(
               radius: 50,
               backgroundColor: Colors.grey.shade400,
               child: ( _profileUpdateController.profileDetailsController.modal.avatarOriginal!= "")
-                  ? Image.network("${_profileUpdateController.profileDetailsController.modal.avatarOriginal}")
+                  ? Image.network("${_profileUpdateController.profileDetailsController.modal.avatarOriginal}",errorBuilder: ((context, error, stackTrace) => Image.asset(ImagesConstant.logo)),)
                   : Image.asset(ImagesConstant.logo),
-            ),
+            ):Container(
+             height: 100,width: 100,decoration: BoxDecoration(
+             shape: BoxShape.circle
+           ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child:Image.file(_profileUpdateController.imageFilePath.value,errorBuilder: ((context, error, stackTrace) => Image.asset(ImagesConstant.logo)),fit: BoxFit.fill,)
+
+              ),
+            ), ) ,
             SizedBox(
               width: 20,
             ),
@@ -103,19 +111,24 @@ class UpdateUserProfile extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.purple,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Text(
-                        "Upload",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
+                    InkWell(
+                      onTap: (){
+                        _profileUpdateController.filePiker();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: Colors.purple,
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Text(
+                          "Upload",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -188,10 +201,10 @@ class UpdateUserProfile extends StatelessWidget {
         ContainerWidget(
           textFieldtext: "Password",
           title: "Confirm Password",
-          defaultVal:  _profileUpdateController.newPasswordController.value,
+          defaultVal:  _profileUpdateController.confirmPasswordController.value,
           isPhone: false,
           on_change: (a) {
-            _profileUpdateController.newPasswordController.value=a;
+            _profileUpdateController.confirmPasswordController.value=a;
           },
         ),
         ContainerWidget(
@@ -266,12 +279,7 @@ class UpdateUserProfile extends StatelessWidget {
     );
   }
 
-  void showLoadingDialog() {
-    Get.defaultDialog(
-      barrierDismissible: false,
-        title: "",
-        content:Container(height: 30,child: CircularProgressIndicator(),));
-  }
+
 }
 
 class ContainerWidget extends StatelessWidget {

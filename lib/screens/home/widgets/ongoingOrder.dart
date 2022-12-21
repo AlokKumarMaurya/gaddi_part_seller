@@ -37,24 +37,27 @@ class OnGoingOrder extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.purple,
                     borderRadius: BorderRadius.circular(12)),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:  [
                     Padding(
-                      padding: EdgeInsets.only(left: 18.0,top: 15),
+                      padding: EdgeInsets.only(left: 18.0,top:5),
                       child: Obx(()=>Text(
                         "${_dashboardController.allDashBoard.value[0].totalProduct}",
+                        maxLines: 2,
                         style: TextStyle(
+
                             fontWeight: FontWeight.bold,
                             fontSize: 50,
                             color: Colors.white),
                       )),
                     ) ,
                     Container(
-                      padding: EdgeInsets.only(left: 10,top: 25),
+                      padding: EdgeInsets.only(left: 25,top:0),
                       child: Text("Products",
                         maxLines: 2,
                         style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
                             fontWeight: FontWeight.w400,
                             fontSize: 20,
                             color: Colors.white),),
@@ -72,11 +75,11 @@ class OnGoingOrder extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.blue.shade600,
                     borderRadius: BorderRadius.circular(12)),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:  [
                     Padding(
-                      padding: EdgeInsets.only(left: 18.0,top: 15),
+                      padding: EdgeInsets.only(left: 18.0,top: 5),
                       child: Obx(()=>Text(
                         "${_dashboardController.allDashBoard.value[0].totalSale}",
                         style: TextStyle(
@@ -86,8 +89,8 @@ class OnGoingOrder extends StatelessWidget {
                       )),
                     ) ,
                     Container(
-                      padding: EdgeInsets.only(left: 10,top: 20),
-                      child: Text("Total\n sales",
+                      padding: EdgeInsets.only(left: 25,top: 0),
+                      child: Text("Total sales",
                         maxLines: 2,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -115,11 +118,11 @@ class OnGoingOrder extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(12)),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:  [
                     Padding(
-                      padding: EdgeInsets.only(left: 18.0,top: 15),
+                      padding: EdgeInsets.only(left: 18.0,top: 0),
                       child: Text(
                         "0",
                         style: TextStyle(
@@ -129,8 +132,8 @@ class OnGoingOrder extends StatelessWidget {
                       ),
                     ) ,
                     Container(
-                      padding: EdgeInsets.only(left: 10,top: 20),
-                      child: Text("Total \nearnings",
+                      padding: EdgeInsets.only(left: 25,top: 0),
+                      child: Text("Total earnings",
                         maxLines: 2,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -150,11 +153,11 @@ class OnGoingOrder extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.red.shade300,
                     borderRadius: BorderRadius.circular(12)),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:  [
                     Padding(
-                      padding: EdgeInsets.only(left: 18.0,top: 15),
+                      padding: EdgeInsets.only(left: 18.0,top: 0),
                       child: Obx(() =>Text(
                         "${_dashboardController.allDashBoard.value[0].successOrder}",
                         style: TextStyle(
@@ -164,8 +167,8 @@ class OnGoingOrder extends StatelessWidget {
                       )),
                     ) ,
                   Container(
-                    padding: EdgeInsets.only(left: 10,top: 20),
-                    child: Text("Successful\n orders",
+                    padding: EdgeInsets.only(left: 20,top: 0),
+                    child: Text("Success orders",
                       maxLines: 2,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
