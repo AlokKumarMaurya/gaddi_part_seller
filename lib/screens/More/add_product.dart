@@ -45,8 +45,6 @@ class AddProduct extends StatelessWidget {
   }
 
   detailsWidget() {
-    var filedHeight = high.value / 13.5;
-    var test = "1".obs;
     return Column(
       children: [
         SizedBox(
@@ -74,12 +72,12 @@ class AddProduct extends StatelessWidget {
                 on_drop_down_change: (a) {
                   _addProductController.categoryId.value=a;
                 },
-                dropDownInitialValue: "Category ID".obs),
+                dropDownInitialValue: "${_addProductController.categoryId.value}".obs),
             DropDownContainer(
                 dropdownHeading: "Brand ID",
                 dropDownList: ["Select Barnd", "2", "34", "4"],
                 on_drop_down_change: (a) {_addProductController.barndId.value=a;},
-                dropDownInitialValue: "Select Barnd".obs),
+                dropDownInitialValue: "${_addProductController.barndId.value}".obs),
           ],
         ),
         SizedBox(
@@ -92,12 +90,12 @@ class AddProduct extends StatelessWidget {
                 dropdownHeading: "Is Refundable",
                 dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.isRefundable.value=a;},
-                dropDownInitialValue: "".obs),
+                dropDownInitialValue: "${_addProductController.isRefundable.value}".obs),
             DropDownContainer(
                 dropdownHeading: "Is Geniune",
                 dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.isGeniune.value=a;},
-                dropDownInitialValue: "".obs),
+                dropDownInitialValue: "${_addProductController.isGeniune.value}".obs),
           ],
         ),
         SizedBox(
@@ -166,7 +164,7 @@ class AddProduct extends StatelessWidget {
         RowWidget(
             dropdownHeading: "Stock visible",
             textFieldHeading: "Qyality",
-            defauldText: "defauldText",
+            defauldText: "",
             dropDownList: ["","Yes", "No"],
             on_drop_down_change: (a) {
               _addProductController.stockVisible.value=a;
@@ -174,7 +172,7 @@ class AddProduct extends StatelessWidget {
             on_text_field_change: (a) {
               _addProductController.quality.value=a;
             },
-            dropDownInitialValue: "".obs),
+            dropDownInitialValue: "${_addProductController.stockVisible.value}".obs),
         SizedBox(
           height: 15,
         ),
@@ -201,7 +199,7 @@ class AddProduct extends StatelessWidget {
             on_text_field_change: (a) {
               _addProductController.discount.value=a;
             },
-            dropDownInitialValue: "".obs),
+            dropDownInitialValue: "${_addProductController.discount.value}".obs),
 
         SizedBox(
           height: 15,
@@ -213,12 +211,12 @@ class AddProduct extends StatelessWidget {
                 dropdownHeading: "Earn point",
                 dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.earnPont.value=a;},
-                dropDownInitialValue: "".obs),
+                dropDownInitialValue: "${_addProductController.earnPont.value}".obs),
             DropDownContainer(
                 dropdownHeading: "Shipping type",
                 dropDownList: ["","COD", "Online"],
                 on_drop_down_change: (a) {_addProductController.shippingType.value=a;},
-                dropDownInitialValue: "".obs),
+                dropDownInitialValue: "${_addProductController.shippingType.value}".obs),
           ],
         ),
         SizedBox(

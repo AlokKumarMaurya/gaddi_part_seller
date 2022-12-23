@@ -90,39 +90,39 @@ class MoreScreen extends StatelessWidget {
                         style: _textStyle,
                       ),
                     ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.wallet,
-                        color: Colors.blue,
-                        size: iconSize,
-                      ),
-                      title: Text(
-                        "Wallet",
-                        style: _textStyle,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.food_bank_outlined,
-                        color: Colors.blue,
-                        size: iconSize,
-                      ),
-                      title: Text(
-                        "Bank",
-                        style: _textStyle,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.shop_2_outlined,
-                        color: Colors.blue,
-                        size: iconSize,
-                      ),
-                      title: Text(
-                        "My Shop",
-                        style: _textStyle,
-                      ),
-                    ),
+                    // ListTile(
+                    //   leading: Icon(
+                    //     Icons.wallet,
+                    //     color: Colors.blue,
+                    //     size: iconSize,
+                    //   ),
+                    //   title: Text(
+                    //     "Wallet",
+                    //     style: _textStyle,
+                    //   ),
+                    // ),
+                    // ListTile(
+                    //   leading: Icon(
+                    //     Icons.food_bank_outlined,
+                    //     color: Colors.blue,
+                    //     size: iconSize,
+                    //   ),
+                    //   title: Text(
+                    //     "Bank",
+                    //     style: _textStyle,
+                    //   ),
+                    // ),
+                    // ListTile(
+                    //   leading: Icon(
+                    //     Icons.shop_2_outlined,
+                    //     color: Colors.blue,
+                    //     size: iconSize,
+                    //   ),
+                    //   title: Text(
+                    //     "My Shop",
+                    //     style: _textStyle,
+                    //   ),
+                    // ),
                     InkWell(
                       onTap: () {
                         Get.defaultDialog(

@@ -10,7 +10,7 @@ import '../../helperWidget/snackbar.dart';
 import '../../utils/modals/more_page/brand_list.dart';
 
 class AddProductController extends GetxController {
-  static AddProductController get to => Get.find<AddProductController>();
+  // static AddProductController get to => Get.find<AddProductController>();
 
   var startselectedDate = DateTime.now().obs;
  var  endselectedDate =   DateTime.now().obs;
@@ -23,8 +23,8 @@ class AddProductController extends GetxController {
    RxBool isAllFieldValid=false.obs;
   //add product text field controller
   var name = "".obs;
-  var categoryId = "".obs;
-  var barndId = "".obs;
+  var categoryId = "Category ID".obs;
+  var barndId = "Select Barnd".obs;
   var isRefundable = "".obs;
   var isGeniune = "".obs;
   var minQty = "".obs;
@@ -93,8 +93,6 @@ class AddProductController extends GetxController {
         ShowCustomSnackbar().showSnackbar('Thumbnail selected.');
         print(thumbnailPathString);
       }
-
-      update();
     } else {
       ShowCustomSnackbar().showSnackbar('No image selected.');
       print('No image selected.');
@@ -108,12 +106,7 @@ class AddProductController extends GetxController {
   }
 
   void uploadProduct() async {
-    Get.dialog(Container(
-      height: 200,
-      width: 200,
-      color: Colors.transparent,child: Center(child: CircularProgressIndicator()),));
     checkValidationOfFields();
-
   }
 
 
@@ -147,7 +140,7 @@ class AddProductController extends GetxController {
     }  else if(shippingType==""){
       ShowCustomSnackbar().showSnackbar("Select shipping type first");
     } else if(imagePathString.isNullOrBlank!){
-      ShowCustomSnackbar().showSnackbar("Select image first first");
+      ShowCustomSnackbar().showSnackbar("Select image first ");
     }else if(thumbnailPathString.isNullOrBlank!){
       ShowCustomSnackbar().showSnackbar("Select thumbnail first");
     }else if(estimatedShippingDays.value.isEmpty){
@@ -165,6 +158,10 @@ class AddProductController extends GetxController {
     }else if(description.value.isEmpty){
       ShowCustomSnackbar().showSnackbar("Enter description first");
     } else {
+      Get.dialog(Container(
+        height: 200,
+        width: 200,
+        color: Colors.transparent,child: Center(child: CircularProgressIndicator()),));
     var response=await ApiClint().UploadProduct();
     if(response!=null){
       Get.back();

@@ -157,7 +157,7 @@ class RowWidget extends StatelessWidget {
           Container(
             width: widt/2,
             child: ContainerWidget(
-              textFieldtext: "test",
+              textFieldtext: "",
               title: "${textFieldHeading}",
               defaultVal:  "${defauldText}",
               isPhone: false,
@@ -222,7 +222,9 @@ class DropDownContainer extends StatelessWidget {
                           child: Text(e.toString())) ;
                     }).toList(), onChanged:(val){
                   on_drop_down_change(val.toString());
-                  dropDownInitialValue.value=val.toString();  })))),
+                  dropDownInitialValue.value=val.toString();
+                    debugPrint(dropDownInitialValue.value.toString());
+                    })))),
       ],
     );
   }

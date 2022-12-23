@@ -44,7 +44,7 @@ class AuthController extends GetxController {
         SharedPrefrences().saveEmail(modal.user.email);
         SharedPrefrences().saveAvatar((modal.user.avatarOriginal != null) ? modal.user.avatarOriginal : "");
         SharedPrefrences().savePhone(modal.user.phone);
-
+             ShowCustomSnackbar().showSnackbar("Login successful");
         Get.offNamed("/NavigationBarScreen");
       }
     }
