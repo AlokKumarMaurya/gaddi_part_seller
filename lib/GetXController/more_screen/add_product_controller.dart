@@ -24,7 +24,7 @@ class AddProductController extends GetxController {
   //add product text field controller
   var name = "".obs;
   var categoryId = "Category ID".obs;
-  var barndId = "Select Barnd".obs;
+  var barndId = "Select Brand".obs;
   var isRefundable = "".obs;
   var isGeniune = "".obs;
   var minQty = "".obs;

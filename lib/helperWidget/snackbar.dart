@@ -11,7 +11,7 @@ class ShowCustomSnackbar{
         duration: Duration(seconds: 2),
         message: message,
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.green,
       borderRadius: 12,
       isDismissible: true,
       dismissDirection: DismissDirection.endToStart,

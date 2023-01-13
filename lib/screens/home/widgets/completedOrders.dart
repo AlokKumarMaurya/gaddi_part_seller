@@ -18,7 +18,7 @@ class CompletedOrders extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Completed orders",
+            "Completed Orders",
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 20,
@@ -46,7 +46,7 @@ class CompletedOrders extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "Deleivered",
+                        "Delevered",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w300),
                       ),

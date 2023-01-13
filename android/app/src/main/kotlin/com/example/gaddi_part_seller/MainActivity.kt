@@ -1,4 +1,4 @@
-package com.example.gaddi_part_seller
+package com.gaddi_part.seller
 
 import io.flutter.embedding.android.FlutterActivity
 

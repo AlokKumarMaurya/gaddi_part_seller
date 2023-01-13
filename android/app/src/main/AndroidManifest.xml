@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gaddi_part_seller">
+    package="com.gaddi_part.seller">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="Gaddi Part Seller"
+        android:label="Gaadi Part Seller"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

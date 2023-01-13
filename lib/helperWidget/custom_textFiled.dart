@@ -207,13 +207,14 @@ class DropDownContainer extends StatelessWidget {
             child: DropdownButtonHideUnderline(
                 child: DropdownButton(
                     isExpanded: true,
-                    value: dropDownInitialValue.value,
+                    value: dropDownInitialValue!.value,
+                    disabledHint: Text("hint text"),
                     // style: TextStyle(
                     //   overflow: TextOverflow.ellipsis,
                     //   color: Colors.black,
                     //   fontSize: 15
                     // ),
-                    hint: Text("Select value.",style: TextStyle(
+                    hint: Text("Select value",style: TextStyle(
                         color: Colors.black
                     ),),
                     items: dropDownList.map((e){
@@ -222,8 +223,10 @@ class DropDownContainer extends StatelessWidget {
                           child: Text(e.toString())) ;
                     }).toList(), onChanged:(val){
                   on_drop_down_change(val.toString());
-                  dropDownInitialValue.value=val.toString();
-                    debugPrint(dropDownInitialValue.value.toString());
+                  if(dropDownInitialValue!=null)
+                    {dropDownInitialValue!.value=val.toString();
+                    debugPrint(dropDownInitialValue!.value.toString());}
+
                     })))),
       ],
     );

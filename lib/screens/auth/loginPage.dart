@@ -97,11 +97,11 @@ class LoginPage extends StatelessWidget {
                   getxLogin.isRemberOn.value=!getxLogin.isRemberOn.value;
                 })),
                 SizedBox(width: 5,),
-                Text("Rember me"),
+                Text("Remember me"),
                 Expanded(child: Container(
                   margin: EdgeInsets.only(right: 30),          
                   alignment: Alignment.centerRight,
-                  child: Text("Forget Passwaord"),
+                  child: Text("Forget Password"),
                 ))
               ],
             ) ,

@@ -14,7 +14,7 @@ class OnGoingOrder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "OngoingOrders",
+          "Ongoing Orders",
           style: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 20,
@@ -90,7 +90,7 @@ class OnGoingOrder extends StatelessWidget {
                     ) ,
                     Container(
                       padding: EdgeInsets.only(left: 25,top: 0),
-                      child: Text("Total sales",
+                      child: Text("Total Sales",
                         maxLines: 2,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -133,7 +133,7 @@ class OnGoingOrder extends StatelessWidget {
                     ) ,
                     Container(
                       padding: EdgeInsets.only(left: 25,top: 0),
-                      child: Text("Total earnings",
+                      child: Text("Total Earnings",
                         maxLines: 2,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -168,7 +168,7 @@ class OnGoingOrder extends StatelessWidget {
                     ) ,
                   Container(
                     padding: EdgeInsets.only(left: 20,top: 0),
-                    child: Text("Success orders",
+                    child: Text("Success Orders",
                       maxLines: 2,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,

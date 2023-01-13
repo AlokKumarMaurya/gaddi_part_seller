@@ -75,9 +75,10 @@ class AddProduct extends StatelessWidget {
                 dropDownInitialValue: "${_addProductController.categoryId.value}".obs),
             DropDownContainer(
                 dropdownHeading: "Brand ID",
-                dropDownList: ["Select Barnd", "2", "34", "4"],
+                dropDownList: ["Select Brand", "2", "34", "4"],
                 on_drop_down_change: (a) {_addProductController.barndId.value=a;},
                 dropDownInitialValue: "${_addProductController.barndId.value}".obs),
+
           ],
         ),
         SizedBox(
@@ -92,7 +93,7 @@ class AddProduct extends StatelessWidget {
                 on_drop_down_change: (a) {_addProductController.isRefundable.value=a;},
                 dropDownInitialValue: "${_addProductController.isRefundable.value}".obs),
             DropDownContainer(
-                dropdownHeading: "Is Geniune",
+                dropdownHeading: "Is Genuine",
                 dropDownList: ["","Yes", "No"],
                 on_drop_down_change: (a) {_addProductController.isGeniune.value=a;},
                 dropDownInitialValue: "${_addProductController.isGeniune.value}".obs),
@@ -129,7 +130,7 @@ class AddProduct extends StatelessWidget {
           alignment: Alignment.centerLeft,
           width: double.infinity,
           child: Text(
-            "Select Date Range of discount",
+            "Select Date Range of Discount",
             style: TextStyle(
                 color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
           ),
@@ -163,7 +164,7 @@ class AddProduct extends StatelessWidget {
         ),
         RowWidget(
             dropdownHeading: "Stock visible",
-            textFieldHeading: "Qyality",
+            textFieldHeading: "Quality",
             defauldText: "",
             dropDownList: ["","Yes", "No"],
             on_drop_down_change: (a) {
